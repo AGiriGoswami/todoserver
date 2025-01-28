@@ -13,7 +13,7 @@ const port = process.env.PORT;
 const db = process.env.MONGO_URL;
 
 const corsOptions = {
-  origin: process.env.URL,
+  origin:"http://localhost:3000 ",
   credentials: true, 
   methods: "GET, POST, PUT, DELETE",
   alloweHeaders: ["Content-Type", "Authorization"],

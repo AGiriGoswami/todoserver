@@ -3,7 +3,7 @@ import userModel from "../Models/UserModel.js";
 
 export const jwttoken = async (userId, res) => {
   const token = jwt.sign({ userId }, process.env.KEY, {
-    expiresIn: "10d",
+    expiresIn: "1h",
   });
   res.cookie ("jwt",token ,{
     httpOnly: true,

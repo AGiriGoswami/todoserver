@@ -5,7 +5,7 @@ import { jwttoken } from "../Jwt/token.js";
 import stringifySafe from "json-stringify-safe"
 
 export const userSchema = z.object({
-  name: z.string().min(3, { message: "Nam Must be 3 or more characters long" }),
+  name: z.string().min(3, { message: "Name Must be 3 or more characters long" }),
   email: z.string().email({ message: "Invalid email address" }),
   password: z
     .string()
@@ -16,7 +16,7 @@ export const LoginSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
   password: z
     .string()
-    .min(4, { message: "Password Must be 4 or more characters long" }),
+    .min(4, { message: "Password Must be 4 o    r more characters long" }),
 });
 
 export const register = async (req, res) => {
@@ -95,10 +95,11 @@ export const login = async (req, res) => {
         message: "Wrong Password",
       });
     }
-    await jwttoken(preuser._id, res);
+    const token = await jwttoken(preuser._id, res);
     return res.status(200).json({
       message: "Login Successful",
       preuser,
+      token
     });
   } catch (error) {
     console.log(error);
